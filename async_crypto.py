@@ -154,14 +154,13 @@ async def calculate_portfolio(crypto_currency, client):
     return portfolio
 
 
-def main():
+async def main():
     """ Main """
     client = Crytpowatch()
     crypto_currency = load_currency_file()
-    loop = asyncio.get_event_loop()
 
-    portfolio = loop.run_until_complete(calculate_portfolio(crypto_currency, client))
-    usd_value = loop.run_until_complete(calculate_usd_value(client))
+    portfolio = await calculate_portfolio(crypto_currency, client)
+    usd_value = await calculate_usd_value(client)
 
     display_portfolio(portfolio, client)
     print(f"Date: {datetime.now()}")
@@ -170,4 +169,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
