@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+""" Queries api.cryptowat.ch and calculates the value of your portfolio 
+    This was the first run proof of concept
+"""
 
 import requests
 from functools import reduce
